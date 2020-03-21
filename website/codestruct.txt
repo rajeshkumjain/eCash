@@ -1,0 +1,73 @@
+directories : website (beta version planning - forntend code)
+:website
+:website>pages
+:website>pages>css
+:website>pages>img
+:website>pages>js
+:website>models - frontend data structure
+:website>usecases - interfaces and implementation of interfaces
+:website>logs - logs from the frontend to go here
+
+-----------------------------------
+User Registration
+
+Frontend calls
+
+User
+	ID
+	Firstname
+	Middlname
+	Surname
+	Email
+	Mobil
+	Password
+	OldPassword
+	EmailVerificationCode
+	MobileVerificationCode
+	AgreeTermsCondition
+	AgreeSendNewsletters
+	RegisterationSource
+	SocialLoginPlugin
+	EnableFlag
+	ActiveFlag
+
+Registration Packet
+	Firstname
+	Middlname
+	Surname
+	Email
+	Mobil
+	Password
+	AgreeTermsCondition
+	AgreeSendNewsletters
+	RegisterationSource
+	SocialLoginPlugin
+
+Return
+	Success 
+	Error
+	Error Message
+
+
+register (user registration packet) return success,error with message
+
+email validation (emailid, verification code) S/F
+mobil validation (mobileNumber, verification code /S/F
+change email (old email id, new email id, user id)
+change password - userid, oldpassword, newpassword
+forget password - userid, email id
+change password - userid, oldpassword, NewPassword
+login authentication - email / mobil, password
+get profile - userid
+update profile - userid and fields to update
+
+
+-- admin calls --
+deactivate user
+enable / disable user
+user listing
+resend email verification code
+resend mobil verification code
+search user
+filter user listing
+review user profile

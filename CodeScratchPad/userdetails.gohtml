@@ -1,0 +1,56 @@
+﻿{{define "show" }}
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>User Details</title>
+</head>
+
+<body>
+
+<header style="background-color: #F6F7F8; padding: 12px; border: 1px solid #D6D9DC; border-radius: 3px; width: 90%; margin: 0 0 20px 0;">
+<h1>Registered User Information</h1>
+    <p>The details of registration as entered by the user at the time of registration </p>
+</header>
+
+<div style="background-color: #F6F7F8; padding: 12px; border: 1px solid #D6D9DC; border-radius: 3px; width: 90%; margin: 0 0 20px 0";><a href="/"><strong>Users Listing</strong></a>  </div>        
+                     
+
+<form action='' method='get' style="background-color: #F6F7F8; padding: 12px; border: 1px solid #D6D9DC; border-radius: 3px; width: 90%; margin: 0 0 40px 0;">
+
+    <div style="text-align: left; padding: 10px; border: 1px solid #D6D9DC; width: auto%">
+        <label style="width: 50px"> <strong> Registered User ID </strong> </label>
+        <input type="text" placeholder= {{ .Id}} style="width: 10%; margin: 10px; height: 30px" > 
+
+        <label> <strong>User Type </strong>  </label>
+        <input type="text" placeholder=   {{ if eq .Rights "U"}} Student {{end}}   style="width: 20%; margin: 10px; height: 30px" > 
+        <input type="checkbox" name="ActiveFlag" value="0" {{if .Enable_flag}} checked {{end}} > <strong> Active Flag </strong><br>
+   </div>
+    <div style="text-align: left; padding: 10px; border: 1px solid #D6D9DC; width: auto%">
+        <label style="width: 50px"> <strong> Name </strong>  </label>
+        <input type="text" placeholder= {{ if .Fname}} {{.Fname}} {{end}} &nbsp;  style="width: 35%; margin: 10px; height: 30px" > 
+        <input type="text" placeholder= {{ if .Mname}} {{.Mname}} {{end}} &nbsp;  style="width: 20%; margin: 10px; height: 30px" > 
+        <input type="text" placeholder= {{ if .Sname}} {{.Sname}} {{end}} &nbsp; style="width: 35%; margin: 10px; height: 30px" > <br>
+   </div>
+    <div style="text-align: left; padding: 10px; border: 1px solid #D6D9DC; width: auto%">
+        <label> <strong> Email </strong>  </label>
+        <input type="text" placeholder=  {{ if .Email_primary}} {{.Email_primary}} {{end}} &nbsp; style="width: 50%; margin: 10px; height: 30px" > <br>
+    </div>
+    <div style="text-align: left; padding: 10px; border: 1px solid #D6D9DC; width: auto%">
+        <label> <strong> Date of Birth </strong>  </label>
+        <input type="text" placeholder=  {{ .DOB}} style="width: 20%; margin: 10px; height: 30px" > <br>
+    </div>
+    <div style="text-align: left; padding: 10px; border: 1px solid #D6D9DC; width: auto%">
+        <input type="checkbox" name="IAgree" {{if .I_agree_t_n_c}} checked {{end}} style="width: 10%; margin: 10px; height: 24px"> 
+                <label style="height: 26px"> <strong> I Agree to Terms & Condition </strong> </label><br>
+        <input type="checkbox" name="IAgreeToNewsletter" {{if .Wants_newsletter}} checked {{end}} style="width: 10%; margin: 10px; height: 24px" > 
+                <label style="height: 26px"> <strong> Send Me Newsletters </strong> </label><br>
+    </div>
+</form>
+
+</body>
+</html>
+
+{{end}}}

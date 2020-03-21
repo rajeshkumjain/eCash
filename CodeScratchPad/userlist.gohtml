@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Listing</title>
+    <link rel='stylesheet' href='styles.css' />
+    <style type="text/css">
+        .divTable{
+            display: table;
+            width: 100%;
+        }
+        .divTableRow {
+            display: table-row;
+        }
+        .divTableHeading {
+            background-color: #EEE;
+            display: table-header-group;
+        }
+        .divTableCell, .divTableHead {
+            border: 1px solid #999999;
+            display: table-cell;
+            padding: 3px 10px;
+            width: 25px;
+            hight: 25px;
+        }
+        .divTableHeading {
+            background-color: #ddd;
+            display: table-header-group;
+            font-weight: bold;
+        }
+        .divTableFoot {
+            background-color: #EEE;
+            display: table-footer-group;
+            font-weight: bold;
+        }
+        .divTableBody {
+            display: table-row-group;
+        }
+    </style> 
+</head>
+
+<body>
+
+<h1>List of Registered Users</h1>
+
+<div class="divTable" stype ="border: 1px solid #000;">
+
+    <div class="divTableHeading">
+        <div class="divTableRow">
+            <div class="divTableCell">&nbsp;ID</div>                
+            <div class="divTableCell">&nbsp;First Name</div>
+            <div class="divTableCell">&nbsp;Surname</div>
+            <div class="divTableCell">&nbsp;Email (Primary)</div>
+            <div class="divTableCell">&nbsp;Actions</div>
+        </div>
+    </div>
+
+    {{range . }}
+
+            <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell">&nbsp;{{ .Id}}</div>                
+                    <div class="divTableCell">&nbsp;{{ .Fname}}</div>
+                    <div class="divTableCell">&nbsp;{{ .Sname}}</div>
+                    <div class="divTableCell">&nbsp;{{ .Email_primary}}</div>
+                    <div class="divTableCell">&nbsp;<a href="/new"> New</a> | <a href="/show?id={{.Id}}">View</a> | <a href="/edit?id={{.Id}}">Edit</a> | <a href="/delete?id={{.Id}}">Del</a></div>
+  
+                </div>
+            </div>
+    {{end}}
+
+</div>
+
+</body>
+</html>
