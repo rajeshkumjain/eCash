@@ -1,0 +1,11 @@
+Services - Thought Process
+--------------------------
+How service flow to be structured
+
+1. Input Validator - take json / data input and rule basic data validation as required by the service
+2. Initial Use Case(s) - call use case interfaces
+3. Repo Calls - call database actions
+4. After Repo Use Cases - any other use case which needs to be run before - call it now
+5. Output - Return back - prepare the return data-packet for the frontend
+
+// end
