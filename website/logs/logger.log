@@ -12,3 +12,8 @@ LOG: 2020/02/09 01:03:36 C:/RJWorks/OneDrive/repo/eCash/website/usecases/user.go
 LOG: 2020/02/09 01:03:54 C:/RJWorks/OneDrive/repo/eCash/website/usecases/user.go:62: {"ID":0,"firstname":"Rajesh","middlename":"K","surname":"Jain","email":"rajeshkum.jain@hotmail.com","mobile":"9910067620","password":"rajesh32","oldpassword":"","emailcode":"99999","mobilecode":"99999","iagree":true,"iagreenewsletter":true,"source":"Website","plugid":99999,"socialsigninname":"Blank","enable":true,"activeflag":false}
 LOG: 2020/02/09 01:03:57 C:/RJWorks/OneDrive/repo/eCash/website/usecases/user.go:71: {"Error":"NONE","Message":"SUCCESS : User Registration (user id (\u0000)"}
 
+LOG: 2020/04/09 21:16:17 C:/RJWorks/OneDrive/repo/eCash/website/main.go:33: initialise logs
+LOG: 2020/04/09 21:16:17 C:/RJWorks/OneDrive/repo/eCash/website/main.go:57: Server started on : http://localhost:8080...
+LOG: 2020/04/09 21:17:08 C:/RJWorks/OneDrive/repo/eCash/website/usecases/user.go:62: {"ID":0,"firstname":"Rajesh","middlename":"K","surname":"Jain","email":"rajesh@gmail.com","mobile":"9910067623","password":"1234567","oldpassword":"","emailcode":"99999","mobilecode":"99999","iagree":true,"iagreenewsletter":true,"source":"Website","plugid":99999,"socialsigninname":"Blank","enable":true,"activeflag":false}
+LOG: 2020/04/09 21:17:09 C:/RJWorks/OneDrive/repo/eCash/website/usecases/user.go:71: {"Error":"NONE","Message":"SUCCESS : User Registration (user id (\u0000)"}
+

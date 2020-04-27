@@ -1,39 +1,20 @@
 package main
 
 import (
-	"fmt"
+	user "github.com/ecash/router/user"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
-
-	ctrl "./controller"
 )
-
-// type Database struct {
-// 	*sql.DB
-// }
 
 func main() {
 
-	APIserver := http.NewServeMux()
-	APIserver.HandleFunc("/u/api/register", ctrl.Register)
+	router := mux.NewRouter()
+	router.HandleFunc("/u/api/register", user.UserRegisteration)
 
-	log.Println("starting api server at 8081...")
-	// log.Println("Connecting database...")
-	// Database, err := repo.NewDB()
-	// if err != nil {
-	// 	log.Println("DB connection failed")
-	// }
-	// fmt.Println("Connected :", Database)
-
-	server := &http.Server{
-		Addr:    ":8081",
-		Handler: APIserver,
-	}
-	server.ListenAndServe()
-	fmt.Println(APIserver)
+	log.Println("Starting eCASH API Server at : http://localhost:8081...")
+	log.Fatal( http.ListenAndServe(":8081", router) )
+	log.Println("Started...")
 
 }
 
-// func startServer() {
-
-// }
