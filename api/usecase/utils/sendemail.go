@@ -32,7 +32,7 @@ To complete your sign up please click the link below and enter the following sec
 
 Step 1 Click the link below 
 
-https://localhost:8081/u/api/activate
+http://localhost:8081/api/user/activate/?key=` + hash + `
 
 Step 2 : Your security code is   [ ` + scode + ` ] 
 
@@ -50,9 +50,7 @@ Rajesh Jain
 	err := smtp.SendMail(smtpServer.Address(), auth, from, to, message)
 	if err != nil {
 		//log.Println("Error: in sending out the email :", err)
-		return errors.New(utls.SrvErrorMap["SRVER0004"] + " " + err.Error() )
+		return errors.New(utls.SrvErrorMap["SRVER0004"] + " " + err.Error())
 	}
 	return nil
 }
-
-
