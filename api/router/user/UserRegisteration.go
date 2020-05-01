@@ -45,7 +45,7 @@ func UserRegisteration(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var id int64
+	var id int
 	id, err = srv.UserRegistrationService(b)
 
 	if err != nil {

@@ -21,7 +21,7 @@ func (s *smtpServer) Address() string {
 func SendEmail(e string, user string, hash string, scode string) error {
 	// need to change my own email id
 	from := "pointsofinterest2019@gmail.com"
-	password := "Poi@123#"
+	password := "POI2164$"
 	to := []string{e}
 
 	message := []byte("Subject: Welcome - Activate Your Account\r\n" + "Dear " + user + `, 

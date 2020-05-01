@@ -11,7 +11,7 @@ import (
 )
 
 // UserRegistrationService : Service Component to complete the registration process
-func UserRegistrationService(data []byte) (int64, error) {
+func UserRegistrationService(data []byte) (int, error) {
 
 	ur := entity.RegisteredUser{}
 
@@ -43,7 +43,7 @@ func UserRegistrationService(data []byte) (int64, error) {
 }
 
 // UserActivationService: Service to Activate the user
-func UserActivationService(e string) (int64, error) {
+func UserActivationService(e string) (int, error) {
 	// Step 1: What is the current Status of User against Activation Key
 	id, enable, activation, err := repo.FindByActivationURL(e)
 	if err != nil {
@@ -69,8 +69,8 @@ func UserActivationService(e string) (int64, error) {
 	log.Println(fp)
 
 	// Step 4: AssignFreeTrailPlan - after successful activation, system to assign free plan to the user
-	var subid int64
-	subid, err = reposub.InsertFreeUserPlan(&fp)
+	var subid int
+	subid, err = reposub.InsertFreeUserPlan(&fp,id)
 	if err != nil {
 
 	}

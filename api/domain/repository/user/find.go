@@ -57,7 +57,7 @@ func FindBy(findby string, s string) (bool, error) {
 }
 
 // FindByActivationURL : Find User Inforamtion based on Activation Key
-func FindByActivationURL(key string) (int64, bool, bool, error) {
+func FindByActivationURL(key string) (int, bool, bool, error) {
 	log.Println("Inside FindByActivationURL")
 	db, err := infra.NewDB()
 	ctx := context.Background()
@@ -65,7 +65,7 @@ func FindByActivationURL(key string) (int64, bool, bool, error) {
 		return 0, false, false, errors.New(repo.MessageMap["C001"])
 	}
 	defer db.Close()
-	var rid int64
+	var rid int
 	var enable,activation bool
 	tsql := `SELECT ru_id, ru_enable_flag, ru_activation_flag 
                FROM RegisteredUser 

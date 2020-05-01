@@ -9,7 +9,7 @@ import (
 )
 
 // InsertUser : Save Data in Entity RegisteredUser
-func ActivateUser(id int64, key string) error {
+func ActivateUser(id int, key string) error {
 
 	log.Println("*** Activate User ***")
 	db, err := infra.NewDB()

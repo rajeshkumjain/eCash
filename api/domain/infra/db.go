@@ -30,6 +30,13 @@ func NewDB() (*DB, error) {
 	}
 
 	db, err := sql.Open("sqlserver", connString)
+
+	db.SetConnMaxLifetime(1)
+	db.SetMaxIdleConns(10)
+	db.SetMaxOpenConns(10)
+	db.Stats()
+
+
 	if err != nil {
 		log.Fatal("*** ERROR *** \n Failed to connect to Database: ", err.Error())
 	}

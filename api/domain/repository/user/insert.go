@@ -12,7 +12,7 @@ import (
 )
 
 // InsertUser : Save Data in Entity RegisteredUser
-func InsertUser(u *entity.RegisteredUser) (int64, error) {
+func InsertUser(u *entity.RegisteredUser) (int, error) {
 
 	log.Println("*** Inside InsertUser Function ***")
 
@@ -70,7 +70,7 @@ func InsertUser(u *entity.RegisteredUser) (int64, error) {
 		sql.Named("ActivationFlag", u.ActivationFlag),
 	)
 
-	var userid int64
+	var userid int
 	err = row.Scan(&userid)
 	if err != nil {
 		//log.Println(repo.MessageMap["C002"], err.Error())
