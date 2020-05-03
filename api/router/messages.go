@@ -11,5 +11,6 @@ var ErrorMap = map[string]string{
 
 	"S001": "SUCCESS: (S001) Thank You - your registration completed successfully ...",
 	"S002": "SUCCESS: (S002) Your Account is now Activated Successfully ...",
+	"S003": "SUCCESS: (S003) Successfully Authenticated ...",
 }
 

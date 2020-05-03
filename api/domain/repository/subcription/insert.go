@@ -22,7 +22,6 @@ func InsertFreeUserPlan(plans *entity.SubscriptionPlans, uid int) (int, error) {
 	log.Println("Subscription Plan :",plans)
 	log.Println("Used ID: ", uid)
 	if err != nil {
-		//		log.Println(repo.MessageMap["C001"])
 		return 0, err
 	}
 	defer db.Close()

@@ -9,9 +9,7 @@ import (
 	"time"
 )
 
-// UserRegistrationValidator:
-// The function is to receive the data bytes and convert into respective entity model
-// after doing proper data validation
+
 func UserRegistrationValidator(data []byte) (entity.RegisteredUser, error) {
 
 	ur := entity.RegisteredUser{}
@@ -49,3 +47,27 @@ func UserRegistrationValidator(data []byte) (entity.RegisteredUser, error) {
 	log.Println("Completed : Data Validation & Setter :\n", ur)
 	return ur, nil
 }
+
+
+// UserLoginValidator:
+func UserLoginValidator(data []byte) (entity.RegisteredUser, error) {
+	ur := entity.RegisteredUser{}
+	err := json.Unmarshal([]byte(data), &ur)
+	if err != nil {
+		return ur, errors.New(utls.SrvErrorMap["SRVER0001"] + " " + err.Error())
+	}
+
+	log.Println("Login Data Packet :",ur)
+	isEmptyEmail := utls.IsEmpty(ur.Email)
+	isEmptyPw := utls.IsEmpty(ur.Password)
+	log.Println("Flags : isEmpty email & password ? ", isEmptyEmail, isEmptyPw)
+	if isEmptyEmail || isEmptyPw {
+		return ur, errors.New(utls.SrvErrorMap["SRVER0002"])
+	}
+	log.Println("Login Data Packet Validated :\n", ur)
+	return ur, nil
+}
+//
+//func UserAuthenticationRules(usr *entity.RegisteredUser) (bool){
+//
+//}

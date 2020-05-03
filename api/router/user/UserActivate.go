@@ -17,11 +17,9 @@ func UserActivate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	// return "OKOK"
 
-	vars := mux.Vars(r)
-	encrypKey := vars["key"]
-
-	log.Println(encrypKey)
-	log.Println("*** Inside User Activation  ***")
+	var vars = mux.Vars(r)
+	var encrypKey = vars["key"]
+	log.Println("*** Inside User Activation  *** \n", encrypKey)
 
 	if encrypKey == "" || len(encrypKey) < 5 {
 		log.Println(router.ErrorMap["E005"])

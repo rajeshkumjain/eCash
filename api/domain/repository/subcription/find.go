@@ -29,7 +29,10 @@ func FindByPlan(fb string) (entity.SubscriptionPlans, error) {
                   FROM [SubscriptionPlans] 
                  WHERE cf_active_flag=1 AND sp_free=1 AND sp_enable=1
                  ORDER BY  [cf_date_created_on] DESC`
-		rows, _ := db.QueryContext(ctx, tsql)
+		rows, err := db.QueryContext(ctx, tsql)
+		if err != nil {
+			return sp, errors.New(repo.MessageMap["C003"])
+		}
 		if rows.Next() {
 			rows.Scan(&sp.ID, &sp.PeriodInDays, &sp.EnableFlag, &sp.Free, &sp.ActiveFlag)
 		}

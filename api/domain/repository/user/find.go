@@ -1,12 +1,12 @@
 package user
 
-
 import (
 	"context"
 	"database/sql"
 	"errors"
 	"github.com/ecash/domain/infra"
 	repo "github.com/ecash/domain/repository"
+	"github.com/ecash/domain/entity"
 	"log"
 )
 
@@ -66,17 +66,51 @@ func FindByActivationURL(key string) (int, bool, bool, error) {
 	}
 	defer db.Close()
 	var rid int
-	var enable,activation bool
+	var enable, activation bool
 	tsql := `SELECT ru_id, ru_enable_flag, ru_activation_flag 
                FROM RegisteredUser 
                WHERE ru_activationURL = @ActivationKey`
 
 	rows, _ := db.QueryContext(ctx, tsql, sql.Named("ActivationKey", key))
 	if rows.Next() {
-		rows.Scan(&rid,&enable,&activation)
+		rows.Scan(&rid, &enable, &activation)
 	}
 	if rid > 0 { // success
-		return rid,enable,activation, nil
+		return rid, enable, activation, nil
 	}
 	return rid, false, false, errors.New(repo.MessageMap["V003"])
+}
+
+// FindAuthentication : Authenticate the user by email & password. Fetching record
+func FindAuthentication(e string, pw string) (entity.RegisteredUser, error) {
+
+	var usr = entity.RegisteredUser{}
+	log.Println("Inside User Authentication")
+	db, err := infra.NewDB()
+	ctx := context.Background()
+	if err != nil {
+		return usr, errors.New(repo.MessageMap["C001"])
+	}
+	defer db.Close()
+
+	tsql := `SELECT r.ru_id, ru_email, r.ru_enable_flag, r.cf_active_flag , 
+                        r.ru_activation_flag, r.ru_is_mobile_verified, r.ru_is_email_verified 
+                 FROM RegisteredUser r 
+                WHERE r.ru_email = @Email AND r.ru_password=@Password`
+
+	rows, _ := db.QueryContext(ctx,
+		tsql,
+		sql.Named("Email", e),
+		sql.Named("Password", pw))
+
+	if rows.Next() {
+		rows.Scan(&usr.ID, &usr.Email, &usr.EnableFlag, &usr.ActiveFlag, &usr.ActivationFlag, &usr.MobilVerified, &usr.EmailVerified)
+	}
+
+	if usr.ID > 0 { // success
+		return usr, nil
+	} else {
+		return usr, errors.New(repo.MessageMap["V005"])
+	}
+
 }
